@@ -11,7 +11,7 @@ import { InvestmentCalculatedData, type InvestmentData } from './data.model';
   imports: [HeaderComponent, CalculatorComponent, DataTableComponent],
 })
 export class AppComponent {
-  calculatedData?: InvestmentCalculatedData;
+  calculatedData = signal<InvestmentCalculatedData|undefined>(undefined);
 
   onCalculateInvestmentResults(data: InvestmentData) {
 
@@ -36,6 +36,6 @@ export class AppComponent {
       });
     }
 
-    this.calculatedData = annualData;
+    this.calculatedData.set(annualData);
   }
 }
